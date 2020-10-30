@@ -112,10 +112,19 @@ LRESULT CALLBACK HookCallback(int code , WPARAM wparam , LPARAM lparam){
                         //curr = WindowFromPoint(pMouseS->pt);
 
                         //GetWindowTextA(curr, curr_title, sizeof(curr_title));
-
-
-                        //SetForegroundWindow(g_hwnd);
-                        PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(pMouseS->pt.x, pMouseS->pt.y));
+                        SetActiveWindow(g_hwnd);
+                        SetForegroundWindow(g_hwnd);
+                        //Sleep(100);
+                        PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
+                        /*if (GetForegroundWindow() == g_hwnd) {
+                            PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
+                        }
+                        else {
+                            SetForegroundWindow(g_hwnd);
+                            PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
+                        }*/
+						//Sleep(100);
+						//PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(pMouseS->pt.x, pMouseS->pt.y));
                     }
                     else {
                         break;/// !!!!!!!!!!!!!!!!!
@@ -133,9 +142,16 @@ LRESULT CALLBACK HookCallback(int code , WPARAM wparam , LPARAM lparam){
                         //lopot.x = pMouseS->pt.x / 2;
                         //lopot.y = pMouseS->pt.y / 2;
 
-
                         //SetForegroundWindow(g_hwnd);
-                        PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(pMouseS->pt.x, pMouseS->pt.y));
+                        //if (GetForegroundWindow() == g_hwnd) {
+                        //    PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
+                        //}
+                        //else {
+                        SetActiveWindow(g_hwnd);
+                        SetForegroundWindow(g_hwnd);
+                        PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
+                        //}
+                        //PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(pMouseS->pt.x, pMouseS->pt.y));
                     }
                     else {
                         break;/// !!!!!!!!!!!!!!!!!
@@ -204,12 +220,36 @@ LRESULT CALLBACK HookCallback_S(int code, WPARAM wparam, LPARAM lparam) {
                     //curr = WindowFromPoint(lopot);
 
                     //GetWindowTextA(curr, curr_title, sizeof(curr_title));
-
-
+                    if (GetForegroundWindow() == g_hwnd) {
+                        //Sleep(50);
+                        //SetActiveWindow(g_hwnd);
+                        //SetForegroundWindow(folderv);
+                        //Sleep(50);
+                        //SetForegroundWindow(g_hwnd);
+                        PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
+                        //SetForegroundWindow(FindWindowW(NULL, L"eeeee.txt - Notepad"));
+                    }
+                    else {
+                        //Sleep(50);
+                        SetForegroundWindow(g_hwnd);
+                        //Sleep(50);
+                        PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
+                    }
+                    //SetActiveWindow(g_hwnd);
                     //SetForegroundWindow(g_hwnd);
-                    PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
+                    //SetFocus(g_hwnd);
+                    //SetActiveWindow(g_hwnd);
+                    //Sleep(100);
+                    //PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
+                    //PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
+                    //SetForegroundWindow(g_hwnd);
+					//Sleep(100);
+					//PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
                 }
                 else {
+                    //SetForegroundWindow(g_hwnd);
+                    //Sleep(100);
+                    //PostMessageW(g_hwnd, WM_LBUTTONDOWN, NULL, MAKELPARAM(lopot.x, lopot.y));
                     break;/// !!!!!!!!!!!!!!!!!
                 }
 
@@ -227,12 +267,25 @@ LRESULT CALLBACK HookCallback_S(int code, WPARAM wparam, LPARAM lparam) {
                     //curr = WindowFromPoint(lopot);
 
                     //GetWindowTextA(curr, curr_title, sizeof(curr_title));
-
-
                     //SetForegroundWindow(g_hwnd);
+                    //if (GetForegroundWindow() == g_hwnd) {
+                        //PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
+                    //}
+                    ///else {
+                    //SetActiveWindow(g_hwnd);
+                    //SetForegroundWindow(g_hwnd);
+                    //SetFocus(g_hwnd);
+                    //SetActiveWindow(g_hwnd);
+                    //Sleep(50);
                     PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
+                    //SetForegroundWindow(FindWindowW(NULL, L"eeeee.txt - Notepad"));
+                    //SetForegroundWindow(g_hwnd);
+                    //}
+                    //PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
                 }
                 else {
+                    //SetForegroundWindow(g_hwnd);
+                    //PostMessageW(g_hwnd, WM_LBUTTONUP, NULL, MAKELPARAM(lopot.x, lopot.y));
                     break;/// !!!!!!!!!!!!!!!!!
                 }
 
